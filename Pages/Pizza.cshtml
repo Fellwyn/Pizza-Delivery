@@ -1,0 +1,54 @@
+﻿@page
+@model Delivery.Pages.PizzaModel
+@{
+}
+
+<!-- a class="nav-link text-dark" asp-area="" asp-page="Forms/CustomPizza">Custom Pizza</!-->
+<!--a class="nav-link text-dark" asp-area="" asp-page="Checkout/Checkout">Checkout</a -->
+
+
+<div class="text-center">
+    <div class="mainText">
+        <h1 class="display-4  text-capitalize text-black">Our great selection of Pizzas</h1>
+        <h4>Choose one pizza or try our Pizza Builder, then order and enjoy!</h4>
+        <p class="smallText text-center"><i>Only one pizza per order.</i></p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-5">
+                <div class="w-100 row makeYourOwnDiv">
+                    <div class="col-4">
+                        <img src="~/img/Create.png" class="w-100" />
+                    </div>
+                    <div class="col align-items-center ">
+                        <div class="text-center makeYourOwnText">
+                            <h3 class="text-start">Create your own Pizza</h3>
+                            <p class="text-start">Make your own Pizza with our PizzaMaker</p>
+                            <a class="btn btn-primary" style=" float: left;" asp-area="" asp-page="Forms/CustomPizza">To Pizza Maker</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            @foreach (var pizza in Model.fakePizzaDB)
+            {
+                var imagePath = "~/img/" + (pizza.ImageTitle + ".png");
+
+                <div class="col-4 mb-5">
+
+                    <img src="@imagePath" class="w-100" asp-append-version="true" />
+                    <a class="btn btn-primary mt-1" asp-area="" asp-page="Checkout/Checkout" asp-route-PizzaName="@pizza.PizzaName" asp-route-ImageTitle="@pizza.ImageTitle" asp-route-PizzaPrice="@pizza.FinalPrice"> Get this pizza</a>
+                    <br />
+                </div>
+            }
+
+
+
+
+
+        </div> <!-- upper row end-->
+    </div>
+
+</div>
